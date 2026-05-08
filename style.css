@@ -1,20 +1,26 @@
 /* CSS Variables for Themes */
 :root {
-    --bg-color: #fff8e1;
+    --bg-color: #fff4e6;
     --text-color: #333333;
-    --accent-color: #007bff;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --card-bg: #ffdab9;
-    --border-color: #e0e0e0;
+    --accent-color: #ff7a00;
+    --secondary-color: #ffa94d;
+    --highlight-color: #ffd43b;
+    --shadow: rgba(255, 122, 0, 0.2);
+    --card-bg: #ffffff;
+    --border-color: #ffe4b5;
+    --glow: 0 0 10px rgba(255, 122, 0, 0.5);
 }
 
 .dark-mode {
-    --bg-color: #1a1a1a;
+    --bg-color: #2a1a0a;
     --text-color: #ffffff;
-    --accent-color: #4dabf7;
-    --shadow: rgba(255, 255, 255, 0.1);
-    --card-bg: #2a2a2a;
-    --border-color: #444444;
+    --accent-color: #ff8c00;
+    --secondary-color: #ffb366;
+    --highlight-color: #ffd700;
+    --shadow: rgba(255, 140, 0, 0.3);
+    --card-bg: #3a2a1a;
+    --border-color: #4a3a2a;
+    --glow: 0 0 15px rgba(255, 140, 0, 0.7);
 }
 
 /* Global Styles */
@@ -54,15 +60,35 @@ a {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--accent-color);
+    background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
     color: white;
     border-radius: 5px;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    box-shadow: var(--glow);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    box-shadow: 0 0 20px rgba(255, 122, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 /* Header */
@@ -92,8 +118,22 @@ header .container {
 
 /* Hero Section */
 #hero {
+    background: linear-gradient(135deg, var(--bg-color), var(--secondary-color));
     padding: 50px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 122, 0, 0.1) 0%, transparent 70%);
+    animation: sparkle 3s infinite;
 }
 
 .hero-content {
@@ -111,8 +151,9 @@ header .container {
 
 .tagline {
     font-style: italic;
-    color: var(--accent-color);
+    color: var(--secondary-color);
     margin-bottom: 20px;
+    text-shadow: 0 0 3px var(--highlight-color);
 }
 
 /* Sections */
@@ -125,6 +166,8 @@ section h3 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 2em;
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--highlight-color);
 }
 
 /* Skills */
@@ -140,11 +183,30 @@ section h3 {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px var(--shadow);
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 .skill-card:hover, .hobby-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.skill-card::before, .hobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.skill-card:hover::before, .hobby-card:hover::before {
+    left: 100%;
 }
 
 .icon {
@@ -187,11 +249,29 @@ section h3 {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px var(--shadow);
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 .img-wrapper:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.img-wrapper:hover::before {
+    left: 100%;
 }
 
 /* Modal */
@@ -271,5 +351,17 @@ footer {
     .modal-content {
         max-width: 90%;
         max-height: 90%;
+    }
+}
+
+/* Animations */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
     }
 }
