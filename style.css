@@ -1,10 +1,10 @@
 /* CSS Variables for Themes */
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #fff8e1;
     --text-color: #333333;
     --accent-color: #007bff;
     --shadow: rgba(0, 0, 0, 0.1);
-    --card-bg: #f9f9f9;
+    --card-bg: #ffdab9;
     --border-color: #e0e0e0;
 }
 
@@ -180,6 +180,18 @@ section h3 {
 .project-category h4 {
     margin-bottom: 20px;
     text-align: center;
+}
+
+.img-wrapper {
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow);
+    transition: transform 0.3s;
+}
+
+.img-wrapper:hover {
+    transform: scale(1.05);
 }
 
 /* Modal */
