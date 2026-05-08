@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Hoàng Văn Vinh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hoàng Văn Vinh</h1>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="https://via.placeholder.com/150x150?text=Avatar" alt="Avatar" class="avatar">
+                    <h2>Hoàng Văn Vinh</h2>
+                    <p class="tagline">"Thiết kế trải nghiệm đơn giản, hiệu quả và có cảm xúc"</p>
+                    <p class="intro">Là sinh viên trường GDU, hiện đang học ngành CNNT - Đồ Họa Kỹ Thuật Số. Tôi đang tập trung vào một dự án thiết kế UI/UX và phát triển kỹ năng thiết kế sản phẩm số.</p>
+                    <a href="#contact" class="btn">Hire Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h3>About Me</h3>
+                <p>Là sinh viên trường GDU, hiện đang học ngành CNNT - Đồ Họa Kỹ Thuật Số. Tôi đang tập trung vào một dự án thiết kế UI/UX và phát triển kỹ năng thiết kế sản phẩm số.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h3>Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="icon">🎨</div>
+                        <h4>Figma</h4>
+                    </div>
+                    <div class="skill-card">
+                        <div class="icon">🖼️</div>
+                        <h4>Photoshop</h4>
+                    </div>
+                    <div class="skill-card">
+                        <div class="icon">✏️</div>
+                        <h4>Adobe Illustrator</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h3>Projects</h3>
+                <div class="gallery">
+                    <div class="project-category">
+                        <h4>Thiết kế Bookmark</h4>
+                        <div class="gallery-grid">
+                            <img src="https://via.placeholder.com/300x200?text=Bookmark+1" alt="Bookmark 1" class="gallery-img">
+                            <img src="https://via.placeholder.com/300x200?text=Bookmark+2" alt="Bookmark 2" class="gallery-img">
+                            <img src="https://via.placeholder.com/300x200?text=Bookmark+3" alt="Bookmark 3" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="project-category">
+                        <h4>Thiết kế mô hình 3D</h4>
+                        <div class="gallery-grid">
+                            <img src="https://via.placeholder.com/300x200?text=3D+Model+1" alt="3D Model 1" class="gallery-img">
+                            <img src="https://via.placeholder.com/300x200?text=3D+Model+2" alt="3D Model 2" class="gallery-img">
+                            <img src="https://via.placeholder.com/300x200?text=3D+Model+3" alt="3D Model 3" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <div class="container">
+                <h3>Hobbies</h3>
+                <div class="hobbies-grid">
+                    <div class="hobby-card">
+                        <div class="icon">🎵</div>
+                        <h4>Nghe nhạc</h4>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="icon">🎮</div>
+                        <h4>Chơi game</h4>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="icon">🚶</div>
+                        <h4>Đi dạo</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h3>Contact</h3>
+                <div class="contact-card">
+                    <p>Email: <a href="mailto:hoangvanvinh8464@gmail.com">hoangvanvinh8464@gmail.com</a></p>
+                    <a href="#hero" class="btn">Hire Me</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Hoàng Văn Vinh</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.querySelector('.close');
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
